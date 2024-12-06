@@ -22,13 +22,67 @@ LIMITATIONS:
 1.	Dependency on Manual Data Entry:
 The accuracy of the information in the system relies on users providing correct and complete data during registration and blood request submissions.
 
-3.	Geographical Constraints:
+2.	Geographical Constraints:
 The system may face limitations in matching donors and recipients if there aren't enough registered users within certain regions, impacting the ability to fulfil blood requests.
 
 3.	Data Privacy and Security:
 Personal information such as contact details must be stored securely to prevent unauthorized access, which requires strong data protection measures.
 
-4.	No Real-Time Blood Availability Tracking:
+ENTITIES AND ATTRIBUTES:
+1. Donor:
+Donor-ID (primary key), Name, Age, blood-type, Contact numbers Address, Last-Donation-Date.
+
+2. Donation:
+Donation-id (primary key, Donor-ID (Foreign key), Date-of-Donations, Blood-Quantity, Blood-Type, Donation-Centre.
+
+3. Blood-Inventory:
+Inventory - Id (primary Key), blood-type, Quantity- Available, Expiry date, storage Location, Donation-ID (Foreign key).
+
+4. Recipient:
+Recipient_id (primary Key), name, age, Blood type-Needed, Hospital- ID (Foreign key) Contact Number, Request Date.
+
+5. Hospital:
+Hospital-Id (primary key, Hospital-Name, location, Contact-Number, Blood-bank- Affiliation, emergency-level.
+
+6. Blood-Request:
+Request (primary key), Recipient-id (foreign key), Blood-Type-Requested, Quantity-Requested, fulfilment status. Request-Date.
+
+RELATIONSHIPS:
+1. Donor-Donation:
+Relationship: A donor can make multiple donations but each donation is linked to one donor.
+Degree: Binary
+Cardinality: one-to-many
+
+2. Donation - Blood Inventory:
+Relationship: Each donation updates the blond inventory; one inventory record contain record of one or more donations
+Degree: binary
+Cardinality: one-to-many
+
+3. Recipient-Blond request:
+Relationship: A recipient can make multiple blood request and each request has separate recipient.
+Degree: Binary
+Cardinality: one-to- many
+
+4. Blood Inventory-Hospital:
+Relationship: A hospital has access to more than one blood inventory and each inventory record can be accessed by more than one hospital if needed.
+Degree: Binary
+Cardinality: many-to-many
+
+5. Hospital-Recipient:
+Relationship: A hospital can serve multiple recipient and each recipient in associated with one hospital.
+Degree: Binary
+Cardinality: one-to-many
+
+6. Blood Request-Blood inventory:
+Relationship: each blood request form access more than one inventory record and each inventory satisfy multiple blood request.
+Degree: binary
+Cardinality: many-to-many
+
+DOCUMENTATION:
+The ER Diagram Contains the system entities, attributes, relationships and rules. The main thing is to ensure accurate relationship, degree, Cardinality. Analysing potential Chasm and fan trap is also Crucial to refine the ERD.
+
+
+5.	No Real-Time Blood Availability Tracking:
 The system relies on user-reported availability rather than real-time tracking of blood inventory in hospitals and blood banks.
 
 6.	Limited Automation in Matching:
